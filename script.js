@@ -152,17 +152,43 @@ class WeatherApp {
             const currentWeatherUrl = `${this.baseUrl}/weather?q=${encodeURIComponent(city)}&appid=${this.apiKey}&units=${units}&lang=de`;
             const forecastUrl = `${this.baseUrl}/forecast?q=${encodeURIComponent(city)}&appid=${this.apiKey}&units=${units}&lang=de`;
 
+            console.log('Fetching weather data for:', city);
+            console.log('Current weather URL:', currentWeatherUrl);
+
             const [currentResponse, forecastResponse] = await Promise.all([
                 fetch(currentWeatherUrl),
                 fetch(forecastUrl)
             ]);
 
+            console.log('Current response status:', currentResponse.status);
+            console.log('Forecast response status:', forecastResponse.status);
+
             if (!currentResponse.ok) {
-                throw new Error(`Stadt nicht gefunden: ${city}`);
+                const errorData = await currentResponse.json().catch(() => ({}));
+                console.error('API Error:', errorData);
+                
+                switch (currentResponse.status) {
+                    case 401:
+                        throw new Error('Ungültiger API-Schlüssel. Bitte überprüfen Sie Ihren OpenWeatherMap API-Schlüssel.');
+                    case 404:
+                        throw new Error(`Stadt "${city}" nicht gefunden. Bitte überprüfen Sie die Schreibweise.`);
+                    case 429:
+                        throw new Error('Zu viele Anfragen. Bitte warten Sie einen Moment und versuchen Sie es erneut.');
+                    default:
+                        throw new Error(`Fehler beim Abrufen der Wetterdaten (${currentResponse.status}): ${errorData.message || 'Unbekannter Fehler'}`);
+                }
+            }
+
+            if (!forecastResponse.ok) {
+                console.error('Forecast API Error:', forecastResponse.status);
+                throw new Error(`Fehler beim Abrufen der Vorhersagedaten (${forecastResponse.status})`);
             }
 
             const currentData = await currentResponse.json();
             const forecastData = await forecastResponse.json();
+
+            console.log('Weather data received:', currentData);
+            console.log('Forecast data received:', forecastData);
 
             this.currentWeatherData = currentData;
             this.displayCurrentWeather(currentData);
@@ -170,7 +196,13 @@ class WeatherApp {
             this.showWeather();
             
         } catch (error) {
-            this.showError(error.message);
+            console.error('Weather fetch error:', error);
+            
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                this.showError('Netzwerkfehler: Bitte überprüfen Sie Ihre Internetverbindung oder starten Sie einen lokalen Webserver.');
+            } else {
+                this.showError(error.message);
+            }
         }
     }
 
@@ -180,13 +212,25 @@ class WeatherApp {
             const currentWeatherUrl = `${this.baseUrl}/weather?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=${units}&lang=de`;
             const forecastUrl = `${this.baseUrl}/forecast?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=${units}&lang=de`;
 
+            console.log('Fetching weather data for coordinates:', lat, lon);
+
             const [currentResponse, forecastResponse] = await Promise.all([
                 fetch(currentWeatherUrl),
                 fetch(forecastUrl)
             ]);
 
             if (!currentResponse.ok) {
-                throw new Error('Wetterdaten konnten nicht abgerufen werden');
+                const errorData = await currentResponse.json().catch(() => ({}));
+                console.error('Coordinates API Error:', errorData);
+                
+                switch (currentResponse.status) {
+                    case 401:
+                        throw new Error('Ungültiger API-Schlüssel. Bitte überprüfen Sie Ihren OpenWeatherMap API-Schlüssel.');
+                    case 429:
+                        throw new Error('Zu viele Anfragen. Bitte warten Sie einen Moment und versuchen Sie es erneut.');
+                    default:
+                        throw new Error(`Fehler beim Abrufen der Wetterdaten für Ihren Standort (${currentResponse.status})`);
+                }
             }
 
             const currentData = await currentResponse.json();
@@ -198,7 +242,13 @@ class WeatherApp {
             this.showWeather();
             
         } catch (error) {
-            this.showError(error.message);
+            console.error('Weather coordinates fetch error:', error);
+            
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                this.showError('Netzwerkfehler: Bitte überprüfen Sie Ihre Internetverbindung oder starten Sie einen lokalen Webserver.');
+            } else {
+                this.showError(error.message);
+            }
         }
     }
 
