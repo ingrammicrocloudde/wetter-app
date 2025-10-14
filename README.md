@@ -5,6 +5,7 @@ Eine moderne, responsive Web-Anwendung zur Anzeige von Wetterinformationen mit 5
 ## Features
 
 ### 🎯 Hauptfunktionen
+
 - **Aktuelle Wetterdaten**: Temperatur, Luftfeuchtigkeit, Windgeschwindigkeit, Luftdruck
 - **5-Tage Wettervorhersage**: Detaillierte Vorhersage für die kommenden Tage  
 - **Stadtsuche**: Suche nach Wetterdaten für beliebige Städte weltweit
@@ -12,12 +13,14 @@ Eine moderne, responsive Web-Anwendung zur Anzeige von Wetterinformationen mit 5
 - **Responsive Design**: Optimiert für Desktop, Tablet und Mobile
 
 ### 🎨 Benutzeroberfläche
+
 - **Dark/Light Theme**: Umschaltbarer Dunkelmodus
 - **Temperatureinheiten**: Wechsel zwischen Celsius und Fahrenheit
 - **Moderne Animationen**: Sanfte Übergänge und Hover-Effekte
 - **Intuitive Bedienung**: Benutzerfreundliche Navigation
 
 ### 🔧 Technische Features
+
 - **API Integration**: OpenWeatherMap API für präzise Wetterdaten
 - **Local Storage**: Speicherung von Benutzereinstellungen
 - **Error Handling**: Umfassende Fehlerbehandlung
@@ -61,35 +64,38 @@ php -S localhost:8000
 ## Verwendung
 
 ### 🔍 Wettersuche
+
 - **Stadtsuche**: Geben Sie eine Stadt in das Suchfeld ein und drücken Sie Enter oder klicken Sie auf das Suchsymbol
 - **Standortsuche**: Klicken Sie auf das Standortsymbol (📍) für das Wetter an Ihrem aktuellen Standort
 
 ### ⚙️ Einstellungen
+
 - **Theme wechseln**: Klicken Sie auf das Mondssymbol (🌙) oben rechts für den Dunkelmodus
 - **Temperatureinheit**: Klicken Sie auf °F/°C um zwischen Fahrenheit und Celsius zu wechseln
 
 ### 📱 Mobile Nutzung
+
 Die App ist vollständig responsive und optimiert für mobile Geräte mit Touch-Navigation.
 
 ## Projektstruktur
 
-```
 weather-app/
 ├── index.html          # Hauptseite mit HTML-Struktur
 ├── styles.css          # Styling und responsive Design
 ├── script.js           # JavaScript-Funktionalität
 ├── README.md           # Diese Dokumentation
 └── .env.example        # Beispiel für Umgebungsvariablen
-```
 
 ## API-Informationen
 
 Diese App verwendet die **OpenWeatherMap API**:
+
 - **Current Weather Data**: Aktuelle Wetterdaten
 - **5 Day Weather Forecast**: 5-Tage Wettervorhersage
 - **Geocoding**: Stadtname zu Koordinaten-Umwandlung
 
 ### Rate Limits
+
 - Kostenloser Plan: 1.000 API-Aufrufe pro Tag
 - Für mehr Anfragen: Upgrade auf einen kostenpflichtigen Plan
 
@@ -104,6 +110,7 @@ Diese App verwendet die **OpenWeatherMap API**:
 ## Entwicklung
 
 ### Lokale Entwicklung
+
 ```bash
 # Live-Server mit automatischem Reload
 npm install -g live-server
@@ -111,6 +118,7 @@ live-server
 ```
 
 ### Anpassungen
+
 - **Farben**: Ändern Sie die CSS-Variablen in `:root` für benutzerdefinierte Farbschemata
 - **Sprache**: Passen Sie die Texte in HTML und JavaScript für andere Sprachen an
 - **API**: Erweitern Sie um zusätzliche API-Endpunkte für mehr Wetterdaten
@@ -130,15 +138,19 @@ MIT License - Freie Nutzung für private und kommerzielle Projekte.
 ### Häufige Probleme
 
 **Problem**: "Bitte fügen Sie Ihren API-Schlüssel hinzu"
+
 - **Lösung**: Stellen Sie sicher, dass Sie Ihren API-Schlüssel in `script.js` eingefügt haben
 
 **Problem**: "Stadt nicht gefunden"
+
 - **Lösung**: Überprüfen Sie die Schreibweise der Stadt oder verwenden Sie englische Stadtnamen
 
 **Problem**: Standortzugriff verweigert
+
 - **Lösung**: Erlauben Sie Standortzugriff in den Browser-Einstellungen
 
 **Problem**: API-Fehler 401
+
 - **Lösung**: Überprüfen Sie, ob Ihr API-Schlüssel korrekt und aktiv ist
 
 ## Support
