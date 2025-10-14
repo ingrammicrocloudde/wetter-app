@@ -1,6 +1,6 @@
 class WeatherApp {
     constructor() {
-        this.apiKey = 'YOUR_API_KEY'; // Ersetzen Sie dies durch Ihren OpenWeatherMap API-Schlüssel
+        this.apiKey = '72e8d0fde36d9f91fc40608693ee582b'; // Ersetzen Sie dies durch Ihren OpenWeatherMap API-Schlüssel
         this.baseUrl = 'https://api.openweathermap.org/data/2.5';
         this.isCelsius = true;
         this.currentWeatherData = null;
