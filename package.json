@@ -1,0 +1,14 @@
+{
+  "name": "wetter-app",
+  "version": "1.0.0",
+  "description": "Eine moderne Wetter-App mit HTML, CSS und JavaScript",
+  "scripts": {
+    "build": "mkdir -p dist && cp index.html styles.css script.js dist/",
+    "build:win": "if not exist dist mkdir dist && copy index.html dist\\ && copy styles.css dist\\ && copy script.js dist\\",
+    "start": "swa start",
+    "deploy": "swa deploy --env production"
+  },
+  "keywords": ["weather", "app", "javascript"],
+  "author": "Your Name",
+  "license": "MIT"
+}

@@ -2,6 +2,14 @@
 
 Eine moderne, responsive Web-Anwendung zur Anzeige von Wetterinformationen mit 5-Tage-Vorhersage.
 
+## 🚀 Live Demo
+
+Die App ist bereitgestellt auf Azure Static Web Apps: [Live Demo](https://your-app-url.azurestaticapps.net)
+
+## 📋 Azure Bereitstellung
+
+Diese App ist für die Bereitstellung auf **Azure Static Web Apps** optimiert und wird automatisch über GitHub Actions bereitgestellt.
+
 ## Features
 
 ### 🎯 Hauptfunktionen
@@ -60,6 +68,61 @@ npx http-server
 # Mit PHP
 php -S localhost:8000
 ```
+
+## 🔧 Azure Static Web Apps Bereitstellung
+
+### Voraussetzungen
+- GitHub Repository
+- Azure Account
+- OpenWeatherMap API-Schlüssel
+
+### Automatische Bereitstellung (empfohlen)
+
+1. **Repository zu GitHub pushen**
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+2. **Azure Static Web App erstellen**
+   - Gehen Sie zum [Azure Portal](https://portal.azure.com)
+   - Erstellen Sie eine neue "Static Web App"
+   - Verbinden Sie Ihr GitHub Repository
+   - Wählen Sie diese Einstellungen:
+     - **App location**: `/`
+     - **Output location**: `dist`
+     - **API location**: (leer lassen)
+
+3. **GitHub Actions automatisch konfiguriert**
+   - Azure erstellt automatisch eine GitHub Actions Workflow-Datei
+   - Die App wird bei jedem Push automatisch bereitgestellt
+
+### Manuelle Bereitstellung mit SWA CLI
+
+```bash
+# SWA CLI installieren
+npm install -g @azure/static-web-apps-cli
+
+# App builden
+npm run build:win
+
+# Lokal testen
+swa start
+
+# In Azure bereitstellen
+swa deploy --env production
+```
+
+### Umgebungsvariablen
+
+Für die Produktion sollten Sie Ihren API-Schlüssel als Umgebungsvariable in Azure konfigurieren:
+
+1. Gehen Sie zu Ihrer Static Web App im Azure Portal
+2. Navigieren Sie zu "Configuration"
+3. Fügen Sie eine neue Application Setting hinzu:
+   - **Name**: `OPENWEATHER_API_KEY`
+   - **Value**: Ihr API-Schlüssel
 
 ## Verwendung
 
