@@ -39,7 +39,7 @@ Diese App ist für die Bereitstellung auf **Azure Static Web Apps** optimiert un
 ### 1. Repository klonen oder Dateien herunterladen
 
 ```bash
-git clone https://github.com/aktapazich/weather-app.git
+git clone https://github.com/ingrammicrocloudde/wetter-app.git
 cd weather-app
 ```
 
