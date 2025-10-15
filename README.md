@@ -4,7 +4,7 @@ Eine moderne, responsive Web-Anwendung zur Anzeige von Wetterinformationen mit 5
 
 ## 🚀 Live Demo
 
-Die App ist bereitgestellt auf Azure Static Web Apps: [Live Demo](https://your-app-url.azurestaticapps.net)
+Die App ist bereitgestellt auf Azure Static Web Apps: [Live Demo](https://green-bush-055a0c303.2.azurestaticapps.net)
 
 ## 📋 Azure Bereitstellung
 
