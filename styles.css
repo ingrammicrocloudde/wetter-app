@@ -1,6 +1,6 @@
 /* CSS Variables for themes */
 :root {
-    --bg-primary: #f0f8ff;
+    --bg-primary: linear-gradient(to bottom, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
     --bg-secondary: #ffffff;
     --bg-accent: #e3f2fd;
     --text-primary: #2c3e50;
@@ -16,7 +16,7 @@
 }
 
 [data-theme="dark"] {
-    --bg-primary: #1a1a1a;
+    --bg-primary: linear-gradient(to bottom, #0d1b2a 0%, #1b263b 50%, #415a77 100%);
     --bg-secondary: #2d2d2d;
     --bg-accent: #3d3d3d;
     --text-primary: #ffffff;
@@ -37,9 +37,11 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--bg-primary);
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.6;
     transition: all 0.3s ease;
+    min-height: 100vh;
 }
 
 .container {
